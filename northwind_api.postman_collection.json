@@ -1,0 +1,89 @@
+{
+  "info": {
+    "_postman_id": "8f3c1a52-4d7b-4c0e-9b2a-11c7a4d9e001",
+    "name": "Northwind API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000"
+    }
+  ],
+  "item": [
+    {
+      "name": "Listar clientes",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/customers",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "customers"]
+        }
+      }
+    },
+    {
+      "name": "Listar productos",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/products",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "products"]
+        }
+      }
+    },
+    {
+      "name": "Listar pedidos",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/orders",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "orders"]
+        }
+      }
+    },
+    {
+      "name": "Obtener pedido por id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/orders/10248",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "orders", "10248"]
+        }
+      }
+    },
+    {
+      "name": "Crear pedido",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"customerId\": \"VINET\",\n  \"employeeId\": 5,\n  \"orderDate\": \"2025-11-04\",\n  \"requiredDate\": \"2025-12-02\",\n  \"shippedDate\": \"2025-11-10\",\n  \"shipVia\": 3,\n  \"freight\": 32.38,\n  \"shipName\": \"Vins et alcools Chevalier\",\n  \"shipAddress\": \"59 rue de l Abbaye\",\n  \"shipCity\": \"Reims\",\n  \"shipRegion\": \"CJ\",\n  \"shipPostalCode\": \"51100\",\n  \"shipCountry\": \"France\",\n  \"orderDetails\": [\n    {\n      \"productId\": 11,\n      \"quantity\": 12,\n      \"unitPrice\": 14,\n      \"discount\": 0\n    },\n    {\n      \"productId\": 42,\n      \"quantity\": 10,\n      \"unitPrice\": 9.8,\n      \"discount\": 0\n    }\n  ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/orders",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "orders"]
+        }
+      }
+    }
+  ]
+}
