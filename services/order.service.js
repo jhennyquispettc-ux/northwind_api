@@ -5,6 +5,7 @@ const Order = require('../models/order');
 const Customer = require('../models/customer');
 const Product = require('../models/product');
 const AppError = require('../middlewares/app.error');
+const Employee = require('../models/employee');
 class OrderService {
     static async getAllOrders() {
         try {
@@ -33,6 +34,10 @@ class OrderService {
         try {
             await client.query('BEGIN');
             const newOrder = new Order(orderData);
+            const employee = await Employee.getById(newOrder.employeeId);
+            if (!employee) {
+                throw new AppError('Empleado no encontrado', 404);
+            } 
             const customer = await Customer.getById(newOrder.customerId);
             if (!customer) {
                 throw new AppError('Cliente no encontrado', 404);
@@ -62,6 +67,7 @@ class OrderService {
             throw new AppError('Error al crear el pedido: ' + error.message, 500);
         }
     }   
+
 
 }
 module.exports = OrderService;
